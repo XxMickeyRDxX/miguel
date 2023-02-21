@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 mt-5">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-dismissible alert-success">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong class="text-dark">{{ message }}</strong>
+            </div>
+            {% endfor %}
+            {% endif %}
+            <h2>Agregar programador</h2>
+            <div class="card">
+                <div class="card-body">
+                    <form action="/agregar_programador/" method="POST">{% csrf_token %}
+                        <div class="form-group">
+                            <label>Nombre:</label>
+                            <input type="text" id="Nombre" name="Nombre" class="form-control" placeholder="Ingrese el nombre del programador"
+                                minlength="5" maxlength="50" required>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <label>Pais:</label>
+                            <input type="text" id="Pais" name="Pais" class="form-control" placeholder="Ingrese el pais del programador"
+                                maxlength="3" required>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <label>Fecha de nacimiento:</label>
+                            <input type="date" id="Fecha_nam" name="Fecha_nam" class="form-control" required>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <label>Puntuación:</label>
+                            <input type="text" id="Puntuacion" name="Puntuacion" class="form-control" placeholder="Ingrese la puntuación del programador"
+                                maxlength="2" required>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <label>Correo electronico:</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Ingrese el correo del programador"
+                                required>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

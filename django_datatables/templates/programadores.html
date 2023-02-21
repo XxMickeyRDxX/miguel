@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="table-responsive">
+                <h1>Listado de Programadores</h1>
+                <div class="table-responsive py-2">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Pais</th>
+                                <th>Fecha nacimiento</th>
+                                <th>Puntuación</th>
+                                <th>Aprobado</th>
+                                <th colspan="2">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for p in programador %}
+                            <tr>
+                                <td>{{forloop.counter}}</td>
+                                <td>{{p.Nombre}}</td>
+                                <td>{{p.Pais}}</td>
+                                <td>{{p.Fecha_nam}}</td>
+                                <td>{{p.Puntuacion}}</td>
+                                <td><script>
+                                    ${programmer.score >= 8 
+                                        ? "<i class='fa-solid fa-check' style='color: green;'></i>" 
+                                        : "<i class='fa-solid fa-xmark' style='color: red;'></i>"}
+                                </script>
+                                </td>
+                                <td><a href="{% url 'edicionProgramador' p.id %}" class="btn btn-info">Editar</a></td>
+                                <td><a href="{% url 'eliminarProgramador' p.id %}" class="btn btn-danger btnEliminacion">Eliminar</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
